@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        async function getData() {
+        const endpoint = 'http://localhost:3000/api'
+        const query = `
+        {
+            users {
+                _id
+                name
+            }
+        }
+        `
+
+        try {
+            result = await fetch(endpoint+'?query='+query)
+            data = await result.json()
+            console.log(data)
+        } catch (error) {
+            console.log(error)
+        }
+          }
+          getData()
+    </script>
+</body>
+</html>

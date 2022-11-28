@@ -1,0 +1,59 @@
+type User {
+    _id: ID!  # con ! definimos que un dato es obligatorio
+    name: String!
+    email: String!
+    address: String
+}
+
+type Product {
+    _id: ID!  
+    name: String!
+    description: String
+    price: String
+}
+
+type Query {
+    "Devuelve todos los usuarios"
+    users: [User]
+    "Devuelve un solo usuario por medio del id"
+    user(id: ID!): User
+
+    "Devuelve todos los productos"
+    products: [Product]
+    "Devuelve un solo producto por medio del id"
+    product(id: ID!): Product
+
+}
+
+input UserInput {
+    name: String!
+    email: String!
+    address: String
+}
+
+input ProductInput {
+     name: String!
+    description: String
+    price: String!
+}
+
+
+input ProductEditInput {
+    name: String
+    description: String
+    price: String
+}
+
+type Mutation {
+    "Crea un usuario"
+    createUser(input: UserInput!) : User # crea un usuario que solicita un tipo UserInput y devuelve User
+    #Actividad crear la mutacion para editar usuarios
+     # Actividad crear la mutacion para elimiar usuarios
+
+  "Crea un producto"
+    createProduct(input: ProductInput!) : Product # crea un producto que solicita un tipo UserInput y devuelve User
+    "Edita un producto"
+    editProduct(_id: ID!, input: ProductEditInput) : Product
+
+    # Actividad crear la mutacion para elimiar productos
+}
